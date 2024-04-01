@@ -1,0 +1,1 @@
+create table pro(site_info varchar(1000), trans varchar(1000), location varchar(1000));
