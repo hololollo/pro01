@@ -27,7 +27,7 @@
     </style>
 </head>
 <body>
-    <div class="logo-container"><img src="logo.jpg" art="로고"></a></div>
+    <div class="logo-container"><img src="logo2.png" art="로고"></div>
     <nav id="gnb">
         <ul>
             <li>
