@@ -55,7 +55,7 @@
 <br>
 
 #### 4-1-3. 서비스 흐름 설계
-![유스케이스](./design/usecase1.png)
+![유스케이스](./design/usecase2.png)
 
 <br>
 
