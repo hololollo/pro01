@@ -45,7 +45,7 @@
 <br>
 
 #### 4-1-1. 자료 수집
-![워드클라우드](./design/wordcloud.png)
+![워드클라우드](./design/wordcloud1.png)
 
 <br>
 
