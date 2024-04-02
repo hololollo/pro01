@@ -27,7 +27,8 @@
     Back Template Language : Java/Servlet 11
     Front Template Language : Jsp(JSTL/EL) 3.0 / HTML5 / CSS3 / Javascript ES5
     Web(Application) Server : Tomcat 9.0
-    Package Information
+    Navigation Design : WordClod 3.7, Card Sort BoardMix
+
 
 <br>
 
