@@ -5,13 +5,19 @@
 <head>
 <meta charset="UTF-8">
 <title>메인</title>
+<%@ include file="/head.jsp" %>
 </head>
 <body>
-<h1>메인 페이지</h1>
-
-<h2>/WebContent/index.jsp</h2>
-<h2>${author }</h2>
-<h2>${realPath }</h2>
-<img src="./images/exo1.jpg" alt="엑소"/>
+<div id="header">
+	<%@ include file="/header.jsp" %>
+</div>
+<div id="contents">
+	<h2>콘텐츠 영역</h2>
+	<p>${author }</p>
+	<hr>
+<div id="footer">
+	<%@ include file="/footer.jsp" %>	
+</div>
+</div>
 </body>
 </html>
