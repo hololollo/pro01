@@ -48,6 +48,8 @@ public class Main extends HttpServlet {
 		//request.setAttribute("latestQnaList", latestQnaList);
 		
 		request.setAttribute("author", author);
+		request.setAttribute("exo1", "./images/exo1.jpg");
+		
 		
 		//forward 시키기.
 		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/index.jsp");

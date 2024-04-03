@@ -12,5 +12,6 @@
 <h2>/WebContent/index.jsp</h2>
 <h2>${author }</h2>
 <h2>${realPath }</h2>
+<img src="./images/exo1.jpg" alt="엑소"/>
 </body>
 </html>
