@@ -4,9 +4,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>메인</title>
 </head>
 <body>
+<h1>메인 페이지</h1>
 
+<h2>/WebContent/index.jsp</h2>
+<h2>${author }</h2>
+<h2>${realPath }</h2>
 </body>
 </html>
