@@ -24,6 +24,14 @@
 	</nav>
 	<hr>
 	<nav id="gnb">
+		<ul class="main_menu">
+			<li><a href="">회원 참여</a>
+				<ul>
+					<li><a href="${hpath }/NotiList.do">자유게시판</a></li>
+					<li><a href="">자료실</a></li>
+				</ul>
+			</li>
+		</ul>
 		<h2></h2>
 	</nav>
 	<hr>
