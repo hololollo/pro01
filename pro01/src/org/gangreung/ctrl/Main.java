@@ -48,7 +48,8 @@ public class Main extends HttpServlet {
 		//request.setAttribute("latestQnaList", latestQnaList);
 		
 		request.setAttribute("author", author);
-		request.setAttribute("exo1", "./images/exo1.jpg");
+		request.setAttribute("exo1", "./images/exo1.jpg"); // 
+		request.setAttribute("title", "강릉 경포동 소개");
 		
 		
 		//forward 시키기.

@@ -24,7 +24,7 @@
 	</nav>
 	<hr>
 	<nav id="gnb">
-		<h2>메인메뉴</h2>
+		<h2></h2>
 	</nav>
 	<hr>
 </header>

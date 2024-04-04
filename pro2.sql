@@ -38,3 +38,6 @@ alter table qna add CONSTRAINT fkey FOREIGN KEY (aid) REFERENCES member(id);
 
 alter table data add constraint fkey2 foreign key(no) references member(id);
 
+
+
+
