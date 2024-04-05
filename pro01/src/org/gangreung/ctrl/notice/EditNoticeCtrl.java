@@ -1,10 +1,9 @@
-package org.gangreung.ctrl;
+package org.gangreung.ctrl.notice;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -14,25 +13,33 @@ import javax.servlet.http.HttpServletResponse;
 import org.gangreung.dao.NoticeDAO;
 import org.gangreung.dto.Notice;
 
-@WebServlet("/NotiList.do") // 글 목록
-public class NoticeListCtrl extends HttpServlet {
+
+@WebServlet("/EditNotice.do")
+public class EditNoticeCtrl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    public NoticeListCtrl() {
+
+	
+    public EditNoticeCtrl() {
         super();
+
     }
+
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
 		
+		int no = Integer.parseInt(request.getParameter("no"));
+		
 		NoticeDAO dao = new NoticeDAO();
-		List<Notice> notiList = new ArrayList<>();
-		notiList = dao.getNoticeList();
-		request.setAttribute("notiList", notiList);		
-		RequestDispatcher view = request.getRequestDispatcher("/notice/noticeList.jsp");
-		view.forward(request, response);
-	}
+		Notice noti = dao.getNotice2(no);
+		
+		request.setAttribute("noti", noti);		
+		RequestDispatcher view = request.getRequestDispatcher("/notice/editNotice.jsp");
+		view.forward(request, response);		
 
-}
+		}
+	}
+	
+

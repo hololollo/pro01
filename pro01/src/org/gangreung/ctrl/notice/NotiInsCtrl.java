@@ -1,4 +1,4 @@
-package org.gangreung.ctrl;
+package org.gangreung.ctrl.notice;
 
 import java.io.IOException;
 
