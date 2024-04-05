@@ -15,6 +15,7 @@ public class NoticeDAO {
 	PreparedStatement pstmt = null;
 	ResultSet rs = null;
 	
+	// select 실행시 목록보기(요청)
 	public List<Notice> getNoticeList(){
 		List<Notice> notiList = new ArrayList<>();
 		
@@ -25,7 +26,7 @@ public class NoticeDAO {
 				pstmt = con.prepareStatement(SqlLang.SELECT_ALL_NOTICE);
 				rs = pstmt.executeQuery();
 				while(rs.next()) {
-					Notice noti = new Notice(rs.getString("no"),
+					Notice noti = new Notice(rs.getInt("no"),
 							rs.getString("title"),
 							rs.getString("content"),
 							rs.getString("resdate"),
@@ -43,18 +44,27 @@ public class NoticeDAO {
 		
 		return notiList;
 	}
-	//누르면 전달
+	
+	
+	
+	
+	
+	// 목록보기 컨트롤러로 전달
 	public Notice getNotice(int no) {
 		Notice noti = new Notice();
 		OracleDB oracle = new OracleDB();
 		
 		try {
 			con = oracle.connect();
+			pstmt = con.prepareStatement(SqlLang.VISITED_UPD_NOTICE);
+			pstmt.setInt(1, no);
+			pstmt.executeUpdate();
+			pstmt = null;
 			pstmt = con.prepareStatement(SqlLang.SELECT_NOTICE_BYNO);
 			pstmt.setInt(1, no);
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
-				noti.setNo(rs.getString("no"));
+				noti.setNo(rs.getInt("no"));
 				noti.setTitle(rs.getString("title"));
 				noti.setContent(rs.getString("content"));
 				noti.setResdate(rs.getString("resdate"));
@@ -67,6 +77,12 @@ public class NoticeDAO {
 		}
 		return noti;
 	}
+	
+	
+	
+	
+	
+	// 글 작성 (전달)
 	public int insNotice(Notice noti) {
 		int cnt = 0;
 		OracleDB oracle = new OracleDB();
@@ -84,15 +100,19 @@ public class NoticeDAO {
 		return cnt;
 	}
 	
-	public int editNotice(Notice noti) {
+	
+	// 글 수정 (전달)
+	// 
+	public int editProNotice(Notice noti) {
 		int cnt = 0;
 		OracleDB oracle = new OracleDB();
 		try {
 			con = oracle.connect();
+			
 			pstmt = con.prepareStatement(SqlLang.UPD_NOTICE);
 			pstmt.setString(1, noti.getTitle());
 			pstmt.setString(2, noti.getContent());
-			pstmt.setString(3, noti.getNo());
+			pstmt.setInt(3, noti.getNo());
 			cnt = pstmt.executeUpdate();
 		} catch(Exception e) {
 			e.printStackTrace();
@@ -100,7 +120,10 @@ public class NoticeDAO {
 			oracle.close(con, pstmt);
 		}
 		return cnt;
-	}
+	}	
+	
+	
+	
 	
 	public int delNotice(int no){
 		int cnt = 0;
@@ -116,5 +139,33 @@ public class NoticeDAO {
 			oracle.close(con, pstmt);
 		}
 		return cnt;
+	}
+	
+	
+	
+	
+	public Notice getNotice2(int no) {
+		Notice noti = new Notice();
+		OracleDB oracle = new OracleDB();
+		
+		try {
+			con = oracle.connect();
+			pstmt = null;
+			pstmt = con.prepareStatement(SqlLang.SELECT_NOTICE_BYNO);
+			pstmt.setInt(1, no);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				noti.setNo(rs.getInt("no"));
+				noti.setTitle(rs.getString("title"));
+				noti.setContent(rs.getString("content"));
+				noti.setResdate(rs.getString("resdate"));
+				noti.setVisited(rs.getInt("visited"));
+			}
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			oracle.close(con, pstmt, rs);
+		}
+		return noti;
 	}
 }

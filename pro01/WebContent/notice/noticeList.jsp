@@ -27,7 +27,7 @@ th.item3 { width:20%; }
 <div id="contents">
 	<section class="page" id="page1">
 		<div style="width:1400px; margin:0 auto;">
-			<h3 class="page_title">자유게시판 목록</h3>
+			<h3 class="page_title">자유게시판 목록 (첫 화면)</h3>
 			<div>
 				<table class="table table-dark">
 					<thead>
@@ -58,6 +58,7 @@ th.item3 { width:20%; }
 				<hr>
 				<div class="btn-group">
 				  <a href="${path0 }/notice/noti_ins.jsp" class="btn btn-secondary">글 등록</a>
+				  <a href="${path0 }/NotiList.do" class="btn btn-secondary">목록으로</a> <!-- 자유게시판이 뜬 상태로 목록이동 -->				  
 				</div>
 			</div>
 		</div>

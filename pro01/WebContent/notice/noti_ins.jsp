@@ -45,6 +45,7 @@
 				<hr>
 				<div class="btn-group">
 				  <button type="submit" class="btn btn-secondary">글 등록</button>
+				  <a href="${path0 }/NotiList.do" class="btn btn-secondary">목록으로</a> <!-- 자유게시판이 뜬 상태로 목록이동 -->
 				</div>
 			</form>
 		</div>

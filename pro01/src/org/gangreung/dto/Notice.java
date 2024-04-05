@@ -1,13 +1,13 @@
 package org.gangreung.dto;
 
 public class Notice {
-	private String no;
+	private int no;
 	private String title;
 	private String content;
 	private String resdate;
 	private int visited;
 	public Notice() {}
-	public Notice(String no, String title, String content, String resdate, int visited) {
+	public Notice(int no, String title, String content, String resdate, int visited) {
 		super();
 		this.no = no;
 		this.title = title;
@@ -15,10 +15,10 @@ public class Notice {
 		this.resdate = resdate;
 		this.visited = visited;
 	}
-	public String getNo() {
+	public int getNo() {
 		return no;
 	}
-	public void setNo(String no) {
+	public void setNo(int no) {
 		this.no = no;
 	}
 	public String getTitle() {

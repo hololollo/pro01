@@ -6,7 +6,7 @@ create table guide(pcode int primary key not null, pname varchar(100) not null, 
 
 create sequence gseq start with 1 increment by 1;
 
-create table notice(no varchar(20) primary key not null, title varchar(200) not null, content varchar(1000) not null, resdate varchar(100) not null, visited int);
+create table notice(no int primary key not null, title varchar(200) not null, content varchar(1000) not null, resdate timestamp, visited int);
 create sequence nseq start with 1 increment by 1;
 
 select * from notice;

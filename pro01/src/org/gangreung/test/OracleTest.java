@@ -28,7 +28,7 @@ public class OracleTest {
 				pstmt = con.prepareStatement(sql); //논리적 채널 연결
 				rs = pstmt.executeQuery();	//sql 구문이 select 문장인 경우에는 commit이 필요 없으므로 executeQuery() 메소드를 사용하며, 결과 반환은 레코드셋(ResultSet)이다. 
 				while(rs.next()) {
-					Notice noti = new Notice(rs.getString("no"),
+					Notice noti = new Notice(rs.getInt("no"),
 							rs.getString("title"),
 							rs.getString("content"),
 							rs.getString("resdate"),
