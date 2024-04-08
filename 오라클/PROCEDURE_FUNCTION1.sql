@@ -1,48 +1,3 @@
-create table traffic(tno int primary key, ttype varchar(20) not null, no varchar(20) not null, route varchar(50), coment varchar(2000));
-
-create sequence tseq start with 1 increment by 1;
-
-create table guide(pcode int primary key not null, pname varchar(100) not null, ptype varchar(3) not null, paddr varchar(200) not null, ptel varchar(20), pgps varchar(50), pcomment varchar(2000));
-
-create sequence gseq start with 1 increment by 1;
-
-create table notice(no int primary key not null, title varchar(200) not null, content varchar(1000) not null, resdate timestamp, visited int);
-create sequence nseq start with 1 increment by 1;
-
-select * from notice;
-commit;
-insert into notice values(nseq.nextval, '더미제목1', '더미내용1', sysdate, default);
-
-
-create table inroduce(comment1 varchar(2000), photo varchar(50), locat varchar(50));
-
-
-
-
-create table qna (no varchar(20) not null, plevel varchar(20), parno int not null, title varchar(100), content varchar(2000), visited int, aid varchar(50) primary key, resdate varchar(20));
--- 질문은 회원만 하기 때문에 member테이블의 id와 비교하는 작업이 필요 (외래키 등록) -> id와 aid는 타입이 같아야한다. varchar면 varchar, 50이면 50
--- 외래키 => 참조테이블의 참조키에 해당하는 aid만 insert(참조무결성 강화)
-create sequence qseq start with 1 increment by 1;
-
-
-
-create table data (no varchar(50) primary key not null, plevel varchar(20), content varchar(2000), datafile varchar(100), resdate varchar(20), visited int);
-
-create sequence dseq start with 1 increment by 1;
-
-
-
-create table member (id varchar(50) primary key not null, pw varchar(15) not null, pwRemark varchar(15) not null, name varchar(10) not null, tel varchar(12) not null, email varchar(30) not null, bdate varchar(10), gender varchar(4) not null);
-select * from member;
--- 외래키 만들기 (id <-> aid, no)
--- create table aid (aidId varchar(15) primary key);
-alter table qna add CONSTRAINT fkey FOREIGN KEY (aid) REFERENCES member(id);
-
--- create table no (noNo int primary key);
-
-alter table data add constraint fkey2 foreign key(no) references member(id);
-
-
 -- 사원(emp) 테이블 작성
 -- 사원번호(eno) 숫자 최대 10자리 , 사원명(ename)가변문자 20자, 부서코드(pno) 숫자 최대 2자리, 직급(pos) 가변문자 10자, 
 -- 우편번호(pcode) 가변문자 7자, 주소(addr) 가변문자 100자, 급여(salery) 숫자 8자, 보너스(bonus) 숫자 8자리, 입사일(regdate) 날짜, 성별(gender) 숫자 최대 2자리
@@ -263,11 +218,16 @@ EXEC ins_emp1(
 -- (단, del_emp 프로시저에서 매개값으로 사원번호가 2001인 사원을 진행할 것) 
 
 CREATE OR REPLACE PROCEDURE del_emp(v_eno IN NUMBER)
+-- create or replace procedure del_emp(v_eno IN emp.eno%TYPE)
 IS
 BEGIN
-DELETE FROM emp1 WHERE eno=v_eno;
+    DELETE FROM emp1 WHERE eno=v_eno;
+    COMMIT;
 --  [EXCEPTION 예외처리부]
 END del_emp;
-
+/
 EXEC del_emp(2001);
 select * from emp1;
+
+
+
