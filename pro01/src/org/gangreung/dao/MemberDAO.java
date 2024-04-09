@@ -23,15 +23,15 @@ public class MemberDAO {
 		try {
 			con = oracle.connect();
 			try {
-				pstmt = con.prepareStatement(SqlLang.SELECT_ALL_NOTICE);
+				pstmt = con.prepareStatement(SqlLang.SELECT_ALL_MEMBER);
 				rs = pstmt.executeQuery();
 				while(rs.next()) {
-					Notice noti = new Notice(rs.getInt("no"),
-							rs.getString("title"),
-							rs.getString("content"),
-							rs.getString("resdate"),
-							rs.getInt("visited"));
-					notiList.add(noti);
+					Member mem = new Member(rs.getString("id"),
+							rs.getString("pw"),
+							rs.getString("name"),
+							rs.getString("email"),
+							rs.getString("tel"));
+					memList.add(mem);
 				}
 			} catch (SQLException e1) {
 				e1.printStackTrace();
@@ -41,6 +41,86 @@ public class MemberDAO {
 		} finally {
 			oracle.close(con, pstmt, rs);
 		}
+		return memList;
+	}
+	public Notice getMember(String id) {
+		Member mem = new Member();
+		OracleDB oracle = new OracleDB();
 		
+		try {
+			con = oracle.connect();
+			pstmt = con.prepareStatement(SqlLang.SELECT_ONE_MEMBER);
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				mem.setId(rs.getString("id"));
+				mem.setPw(rs.getString("pw"));
+				mem.setName(rs.getString("name"));
+				mem.setEmail(rs.getString("email"));
+				mem.setTel(rs.getString("tel"));
+			}
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			oracle.close(con, pstmt, rs);
+		}
+		return mem;
+	}
+	// 회원가입
+	public int join(Member mem) {
+		int cnt = 0;
+		OracleDB oracle = new OracleDB();
+		try {
+			con = oracle.connect();
+			pstmt = con.prepareStatement(SqlLang.INS_MEMBER);
+			pstmt.setString(1, mem.getId());
+			pstmt.setString(2, mem.getPw());
+			pstmt.setString(3, mem.getName());
+			pstmt.setString(4, mem.getEmail());
+			pstmt.setString(5, mem.getTel());
+			cnt = pstmt.executeUpdate();
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			oracle.close(con, pstmt);
+		}
+		return cnt;
+	}
+	//회원정보수정
+	public int upMember(Member mem) {
+		int cnt = 0;
+		OracleDB oracle = new OracleDB();
+		try {
+			con = oracle.connect();
+			pstmt = con.prepareStatement(SqlLang.UPD_MEMBER);
+			pstmt.setString(1, mem.getPw());
+			pstmt.setString(2, mem.getName());
+			pstmt.setString(3, mem.getEmail());
+			pstmt.setString(4, mem.getTel());
+			pstmt.setString(5, mem.getId());
+			cnt = pstmt.executeUpdate();
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			oracle.close(con, pstmt);
+		}
+		return cnt;
+	}
+	// 회원탈퇴
+	public int memberOut(String id) {
+		int cnt = 0;
+		OracleDB oracle = new OracleDB();
+		try {
+			con = oracle.connect();
+			pstmt = con.prepareStatement(SqlLang.DEL_MEMBER);
+			pstmt.setString(1, id);
+			cnt = pstmt.executeUpdate();
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			oracle.close(con, pstmt);
+		}
+		return cnt;
 	}
 }
+

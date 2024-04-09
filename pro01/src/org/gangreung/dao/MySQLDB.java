@@ -18,7 +18,7 @@ public class MySQLDB implements SqlLang{
 	
 	
 	@Override
-	Connection connect() {
+	public Connection connect() {
 		try {
 			Class.forName(DRIVER);
 			try {
@@ -30,6 +30,24 @@ public class MySQLDB implements SqlLang{
 			e.printStackTrace();
 		}
 		return con;
+	}
+	
+	@Override
+	public void close(Connection con, PreparedStatement pstmt) {
+		if(pstmt!=null) {
+			try {
+				pstmt.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		if(con!=null) {
+			try {
+				con.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
 	}
 	@Override
 	public void close(Connection con, PreparedStatement pstmt, ResultSet rs) {
