@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
+// MySQL용
 public class MySQLDB implements SqlLang{
 	final static String DRIVER = "org.mysql.jdbc.Driver";
 	final static String URL = "jdbc:mysql://localhost:3306/kh";
@@ -16,7 +16,9 @@ public class MySQLDB implements SqlLang{
 	PreparedStatement pstmt = null;
 	ResultSet rs = null;
 	
-	public Connection Connect() {
+	
+	@Override
+	Connection connect() {
 		try {
 			Class.forName(DRIVER);
 			try {
@@ -29,6 +31,7 @@ public class MySQLDB implements SqlLang{
 		}
 		return con;
 	}
+	@Override
 	public void close(Connection con, PreparedStatement pstmt, ResultSet rs) {
 		if(rs != null) {
 			try {

@@ -1,5 +1,10 @@
 package org.gangreung.dao;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+
+// 표준 SQL
 public interface SqlLang {
 	String SELECT_ALL_MEMBER = "select * from member order by id";
 	String SELECT_MEMBER_BYID = "select * from member where id=?";
@@ -8,4 +13,8 @@ public interface SqlLang {
 	String UPD_NOTICE = "update notice set title=?, content=? where no=?";
 	String VISITED_UPD_NOTICE = "update notice set visited=visited+1 where no=?";
 	String DEL_NOTICE = "delete from notice where no=?";
+	Connection connect();
+	void close(Connection con, PreparedStatement pstmt);
+	void close(Connection con, PreparedStatement pstmt, ResultSet rs);
+	
 }

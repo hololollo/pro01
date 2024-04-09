@@ -16,6 +16,7 @@ public class OracleDB implements SqlLang{
 	PreparedStatement pstmt = null;
 	ResultSet rs = null;
 	
+	@Override
 	public Connection connect() {
 		try {
 			Class.forName(DRIVER);
@@ -29,6 +30,7 @@ public class OracleDB implements SqlLang{
 		}
 		return con;
 	}
+	@Override
 	public void close(Connection con, PreparedStatement pstmt) {
 		if(pstmt!=null) {
 			try {
@@ -45,6 +47,7 @@ public class OracleDB implements SqlLang{
 			}
 		}
 	}
+	@Override
 	public void close(Connection con, PreparedStatement pstmt, ResultSet rs) {
 		if(rs!=null) {
 			try {
