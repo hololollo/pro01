@@ -8,14 +8,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.gangreung.dto.Member;
-import org.gangreung.dto.Notice;
 
 public class MemberDAO {
-	
 	Connection con = null;
 	PreparedStatement pstmt = null;
 	ResultSet rs = null;
 	
+	// select 실행시 목록보기(요청)
 	public List<Member> getMemberList(){
 		List<Member> memList = new ArrayList<>();
 		
@@ -41,9 +40,11 @@ public class MemberDAO {
 		} finally {
 			oracle.close(con, pstmt, rs);
 		}
+		
 		return memList;
 	}
-	public Notice getMember(String id) {
+	// 로그인
+	public Member getMember(String id) {
 		Member mem = new Member();
 		OracleDB oracle = new OracleDB();
 		
@@ -122,5 +123,24 @@ public class MemberDAO {
 		}
 		return cnt;
 	}
+	public boolean idCheck(String id) {
+		boolean ck = false;
+		OracleDB oracle = new OracleDB();
+		try {
+			con = oracle.connect();
+			pstmt = con.prepareStatement(SqlLang.SELECT_ONE_MEMBER);
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				ck = true;
+			} else {
+				ck = false;
+			}
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			oracle.close(con, pstmt, rs);
+		}
+		return ck;
+	}
 }
-

@@ -49,5 +49,6 @@ public class Member {
 	public String toString() {
 		return "Member [id=" + id + ", pw=" + pw + ", name=" + name + ", email=" + email + ", tel=" + tel + "]";
 	}
-	
+
+
 }

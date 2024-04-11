@@ -34,6 +34,9 @@ create sequence dseq start with 1 increment by 1;
 
 create table member (id varchar(50) primary key not null, pw varchar(20) not null, name varchar(10) not null, email varchar(30) not null, tel varchar(15) not null);
 
+insert into member values('kang', '1234', '강범준', 'kang@gangreung.org','010-8960-3255');
+
+
 select * from member;
 -- 외래키 만들기 (id <-> aid, no)
 -- create table aid (aidId varchar(15) primary key);

@@ -30,7 +30,7 @@ public class Main extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String author = "강범준";
 		
-		// application 객체 (request - page - session - application) : 서버에 올려놨을 때 계속 존재할 수 있게. 
+		// application 객체 (page - trans(request/response) - session - application) : 서버에 올려놨을 때 계속 존재할 수 있게. 
 		ServletContext application = request.getServletContext();
 		String realPath = request.getSession().getServletContext().getRealPath("/");
 		// getsession() : 값불러오기. 어떤걸? context에서 realpath를. => http://127.0.1:8091 -> / 로 명명

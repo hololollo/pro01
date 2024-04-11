@@ -49,7 +49,7 @@ th.item3 { width:20%; }
 							</c:forEach>
 						</c:if>
 						<c:if test="${empty notiList }">
-							<tr>
+							<tr> 
 								<td colspan="4"><strong>목록이 존재하지 않습니다.</strong></td>
 							</tr>
 						</c:if>
