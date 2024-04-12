@@ -1,9 +1,14 @@
-create table traffic(tno int primary key, ttype varchar(20) not null, no varchar(20) not null, route varchar(50), coment varchar(2000));
+create table traffic(tno number primary key, ttype varchar2(20), no varchar2(20), route varchar2(1000), coment varchar2(2000), uri varchar2(150));
 
 create sequence tseq start with 1 increment by 1;
 
-create table guide(pcode int primary key not null, pname varchar(100) not null, ptype varchar(3) not null, paddr varchar(200) not null, ptel varchar(20), pgps varchar(50), pcomment varchar(2000));
+drop table traffic;
+drop sequence tseq;
 
+insert into traffic values(tseq.nextval, '버스','202번','경포해변→강문→강릉녹색도시체험센터→종합경기장→강릉역건너편→한국자산관리공사→교보생명→고용센터→강릉시외고속버스터미널→우미린아파트→선수촌8단지→구름다리→방축거리→오죽헌→선교장→경포해변','2003년 4월 1일 노선번호 변경 때 19-7번에서 경포 방향은 202번, 차고지(공단/안목) 방향은 202-1번으로 바뀌었다. 2018년 1월 29일부터 양 방향 모두 강릉역을 경유하게 되었다.2018년 1월 24일 시내지역 및 주요관광지 순환노선으로 해당 노선을 개편한다고 공지하여, 202번은 강문에서 경포까지 시계방향으로 202-1번 노선은 경포에서 강문까지 반시계방향으로 변경되었다.','https://bis.gn.go.kr/schedule');
+
+create table guide(pcode int primary key not null, pname varchar(100) not null, ptype varchar(3) not null, paddr varchar(200) not null, ptel varchar(20), pgps varchar(50), pcomment varchar(2000));
+-- tour
 create sequence gseq start with 1 increment by 1;
 
 create table notice(no int primary key not null, title varchar(200) not null, content varchar(1000) not null, resdate timestamp, visited int);
@@ -19,12 +24,15 @@ create table inroduce(comment1 varchar(2000), photo varchar(50), locat varchar(5
 
 
 
-create table qna (no varchar(20) not null, plevel varchar(20), parno int not null, title varchar(100), content varchar(2000), visited int, aid varchar(50) primary key, resdate varchar(20));
+create table qna (no int, plevel int, parno int, title varchar(100), content varchar(2000), resdate varchar(20), visited int, aid varchar(50) primary key);
 -- 질문은 회원만 하기 때문에 member테이블의 id와 비교하는 작업이 필요 (외래키 등록) -> id와 aid는 타입이 같아야한다. varchar면 varchar, 50이면 50
 -- 외래키 => 참조테이블의 참조키에 해당하는 aid만 insert(참조무결성 강화)
 create sequence qseq start with 1 increment by 1;
+drop sequence qseq;
 drop table qna;
-
+insert into qna values(qseq.nextval,1,null,'질문1','질문1내용','default',0,'kang');
+select * from qna;
+commit;
 
 create table data (no varchar(50) primary key not null, plevel varchar(20), content varchar(2000), datafile varchar(100), resdate varchar(20), visited int);
 

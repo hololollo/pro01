@@ -1,34 +1,36 @@
 package org.gangreung.dto;
 
 public class Qna {
-	private String no;
-	private String plevel;
+	private int no;
+	private int plevel;
 	private int parno;
 	private String title;
 	private String content;
+	private String resdate;
 	private int visited;
 	private String aid;
 	public Qna() {}
-	public Qna(String no, String plevel, int parno, String title, String content, int visited, String aid) {
+	public Qna(int no, int plevel, int parno, String title, String content, String resdate, int visited, String aid) {
 		super();
 		this.no = no;
 		this.plevel = plevel;
 		this.parno = parno;
 		this.title = title;
 		this.content = content;
+		this.resdate = resdate;
 		this.visited = visited;
 		this.aid = aid;
 	}
-	public String getNo() {
+	public int getNo() {
 		return no;
 	}
-	public void setNo(String no) {
+	public void setNo(int no) {
 		this.no = no;
 	}
-	public String getPlevel() {
+	public int getPlevel() {
 		return plevel;
 	}
-	public void setPlevel(String plevel) {
+	public void setPlevel(int plevel) {
 		this.plevel = plevel;
 	}
 	public int getParno() {
@@ -49,6 +51,12 @@ public class Qna {
 	public void setContent(String content) {
 		this.content = content;
 	}
+	public String getResdate() {
+		return resdate;
+	}
+	public void setResdate(String resdate) {
+		this.resdate = resdate;
+	}
 	public int getVisited() {
 		return visited;
 	}
@@ -64,8 +72,7 @@ public class Qna {
 	@Override
 	public String toString() {
 		return "Qna [no=" + no + ", plevel=" + plevel + ", parno=" + parno + ", title=" + title + ", content=" + content
-				+ ", visited=" + visited + ", aid=" + aid + "]";
+				+ ", resdate=" + resdate + ", visited=" + visited + ", aid=" + aid + "]";
 	}
-	
 	
 }
