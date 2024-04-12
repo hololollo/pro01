@@ -27,7 +27,7 @@ th.item3 { width:20%; }
 <div id="contents">
 	<section class="page" id="page1">
 		<div style="width:1400px; margin:0 auto;">
-			<h3 class="page_title">게시판 글 상세보기(글을 열었을 때)</h3>
+			<h3 class="page_title">글 상세보기(글을 열었을 때)</h3>
 			<div>
 				<table class="table">
 					<tbody>

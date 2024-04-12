@@ -27,7 +27,7 @@ th.item3 { width:20%; }
 <div id="contents">
 	<section class="page" id="page1">
 		<div style="width:1400px; margin:0 auto;">
-			<h3 class="page_title">자유게시판 목록 (첫 화면)</h3>
+			<h3 class="page_title">공지사항 목록 (첫 화면)</h3>
 			<div>
 				<table class="table table-dark">
 					<thead>

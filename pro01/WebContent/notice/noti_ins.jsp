@@ -24,7 +24,7 @@
 <div id="contents">
 	<section class="page" id="page1">
 		<div style="width:1400px; margin:0 auto;">
-			<h3 class="page_title">회원참여 글 등록</h3>
+			<h3 class="page_title">공지사항 글 등록</h3>
 			<form action="${path0 }/NotiIns.do" method="post">
 				<table class="table">
 					<tbody>

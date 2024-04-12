@@ -20,15 +20,19 @@ public interface SqlLang {
 	String UPD_MEMBER = "update member set pw=?, name=?, email=?, tel=? where id=?"; // 회원정보수정
 	String DEL_MEMBER = "delete from member where id=?"; // 회원삭제
 	
-	String SELECT_ALL_QNA = "select * from qna order by parno desc, plevel asc where rownum <= 5";
+	String SELECT_ALL_QNA = "select * from qna order by parno desc, plevel asc";
 	String SELECT_QNA_BYNO = "select * from qna where no=?";
 	String DEL_ANSWER = "delete from qna where no=?";
 	String DEL_QUESTION = "delete from qna where parno=?"; // 질문, 답변 전부 삭제된다.
 	String UPD_QNA = "update qna set title=?,content=?, where no=?";
 	String VISITED_UPD_QNA = "update qna set visited=visited+1 where no=?"; // 조회수
+	String SELECT_ALL_TRAFFIC = "select * from traffic order by ttype desc, no asc";	
+	
+	
+	
+	
 	
 	Connection connect();
-	
 	void close(Connection con, PreparedStatement pstmt);
 	void close(Connection con, PreparedStatement pstmt, ResultSet rs);
 }
