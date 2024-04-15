@@ -62,7 +62,7 @@ th.item4 { width:15%; }
 					<li class="tour_image">
 						<figure class="fg">
 							<c:if test="${dto.ttype.equals('버스') }">
-							<img src="${path0 }/images/bus/${dto.no }_1.jpg" alt="${dto.no } 번 버스 사진" />
+							<img src="${path0 }/images/bus/${dto.no }_1.png" alt="${dto.no } 번 버스 사진" />
 							</c:if>
 						</figure>
 					</li>
@@ -72,7 +72,7 @@ th.item4 { width:15%; }
 					<li class="tour_route_pic">
 						<figure class="fg">
 							<c:if test="${dto.ttype.equals('버스') }">
-							<img src="${path0 }/images/bus/${dto.no }_2.jpg" alt="${dto.no } -1번 버스 사진" />
+							<img src="${path0 }/images/bus/${dto.no }_2.png" alt="${dto.no } -1번 버스 사진" />
 							</c:if>
 						</figure>
 					</li>
