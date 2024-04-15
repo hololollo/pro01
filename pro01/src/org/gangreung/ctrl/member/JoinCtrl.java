@@ -1,4 +1,4 @@
-package org.ganreung.ctrl.member;
+package org.gangreung.ctrl.member;
 
 import java.io.IOException;
 

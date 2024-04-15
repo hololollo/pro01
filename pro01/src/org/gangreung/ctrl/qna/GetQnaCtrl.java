@@ -1,25 +1,26 @@
-package org.ganreung.ctrl.member;
+package org.gangreung.ctrl.qna;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import org.gangreung.dao.MemberDAO;
+import org.gangreung.dao.QnaDAO;
+import org.gangreung.dto.Qna;
 
 
-@WebServlet("/DelMember.do")
-public class DelMemberCtrl extends HttpServlet {
+@WebServlet("/GetQna.do")
+public class GetQnaCtrl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 
-    public DelMemberCtrl() {
+    public GetQnaCtrl() {
         super();
-        
+
     }
 
 
@@ -28,19 +29,15 @@ public class DelMemberCtrl extends HttpServlet {
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
 		
-		String id = request.getParameter("id");
-		MemberDAO dao = new MemberDAO();
-		int cnt = dao.memberOut(id);
+		int no = Integer.parseInt(request.getParameter("no"));
 		
-		HttpSession session = request.getSession(); 
+		QnaDAO dao = new QnaDAO();
+		Qna qna = dao.getQna(no);
 		
-		if(cnt>0) {
-			session.invalidate();
-			response.sendRedirect("/pro01");
-		} else {
-			response.sendRedirect("/EditMember.do?id="+id);
-		}		
+		request.setAttribute("qna", qna);
 		
+		RequestDispatcher view = request.getRequestDispatcher("/qna/getQna.jsp");
+		view.forward(request, response);
 	}
 
 }

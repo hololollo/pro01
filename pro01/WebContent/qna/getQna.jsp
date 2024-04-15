@@ -27,38 +27,58 @@ th.item3 { width:20%; }
 <div id="contents">
 	<section class="page" id="page1">
 		<div style="width:1400px; margin:0 auto;">
-			<h3 class="page_title">게시판 글 상세보기(글을 열었을 때)</h3>
+			<nav aria-label="breadcrumb" style="text-align:right">
+			  <ol class="breadcrumb">
+			    <li class="breadcrumb-item"><a href="#">Home</a></li>
+			    <li class="breadcrumb-item"><a href="${path0 }/GetQnaList.do">질문 및 답변</a></li>
+			    <li class="breadcrumb-item active" aria-current="page">질문 및 답변 상세보기</li>
+			  </ol>
+			</nav>
+			<hr>
+		</div>
+		<div style="width:1400px; margin:0 auto;">
+			<h3 class="page_title">질문 및 답변 상세보기</h3>
 			<div>
 				<table class="table">
 					<tbody>
 						<tr>
 							<th>글 번호</th>
-							<td>${noti.no }</td>
+							<td>${qna.no }</td>
 						</tr>
 						<tr>
 							<th>글 제목</th>
-							<td>${noti.title }</td>
-						</tr>	
-						<tr>
-							<th>글 내용</th>
-							<td>${noti.content }</td>
+							<td>${qna.title }</td>
 						</tr>
 						<tr>
-							<th>작성일시</th>
-							<td>${noti.resdate }</td>
+							<th>글 내용</th>
+							<td>${qna.content }</td>
+						</tr>
+						<tr>
+							<th>작성일시</th>		
+							<td>${qna.resdate }</td>
 						</tr>
 						<tr>
 							<th>조회수</th>
-							<td>${noti.visited }</td>
+							<td>${qna.visited }</td>
 						</tr>
 					</tbody>
 				</table>
 				<hr>
 				<div class="btn-group">
-				  <a href="${path0 }/notice/noti_ins.jsp" class="btn btn-secondary">글 등록</a>
-				  <a href="${path0 }/EditNotice.do?no=${noti.no }" class="btn btn-secondary">글 수정</a>
-				  <a href="${path0 }/DelNotice.do?no=${noti.no }" class="btn btn-secondary">글 삭제</a>
-				  <a href="${path0 }/NotiList.do" class="btn btn-secondary">목록으로</a>
+				  <c:if test="${(not empty sid) and qna.plevel==1 }">
+				  <a href="${path0 }/qna/aIns.jsp?parno=${qna.no }" class="btn btn-secondary">답변 등록</a>
+				  </c:if>
+				  <c:if test="${sid.equals(qna.aid) }">
+					  <c:if test="${qna.plevel==1 }">
+					  <a href="${path0 }/EditQna.do?no=${qna.no }" class="btn btn-secondary">질문 수정</a>
+					  <a href="${path0 }/DelQuestion.do?parno=${qna.no }" class="btn btn-secondary">질문 삭제</a>
+					  </c:if>
+					  <c:if test="${qna.plevel==2 }">
+					  <a href="${path0 }/EditQna.do?no=${qna.no }" class="btn btn-secondary">답변 수정</a>
+					  <a href="${path0 }/DelAnswer.do?no=${qna.no }" class="btn btn-secondary">답변 삭제</a>
+					  </c:if>
+  				  </c:if>
+				  <a href="${path0 }/GetQnaList.do" class="btn btn-secondary">질문 및 답변 목록</a>
 				</div>
 			</div>
 		</div>

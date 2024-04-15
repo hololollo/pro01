@@ -1,4 +1,4 @@
-package org.ganreung.ctrl.member;
+package org.gangreung.ctrl.member;
 
 import java.io.IOException;
 
@@ -12,36 +12,34 @@ import org.gangreung.dao.MemberDAO;
 import org.gangreung.dto.Member;
 
 
-@WebServlet("/JoinPro.do")
-public class JoinProCtrl extends HttpServlet {
+@WebServlet("/EditMemberPro.do")
+public class EditMemberProCtrl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 
-    public JoinProCtrl() {
+    public EditMemberProCtrl() {
         super();
-
+        
     }
 
 
-	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
-		
+		String id = request.getParameter("id");
 		Member mem = new Member(request.getParameter("id"),
 				request.getParameter("pw"),
 				request.getParameter("name"),
 				request.getParameter("email"),
-				request.getParameter("tel"));		
+				request.getParameter("tel"));
 		
 		MemberDAO dao = new MemberDAO();
-		int cnt = dao.join(mem);
-		
+		int cnt = dao.upMember(mem);
 		if(cnt>0) {
 			response.sendRedirect("/pro01");
 		} else {
-			response.sendRedirect("/Join.do");
+			response.sendRedirect("/EditMember.do?id="+id);
 		}
 	}
-
 }

@@ -1,4 +1,4 @@
-package org.gangreung.ctrl.qna;
+package org.gangreung.ctrl.tour;
 
 import java.io.IOException;
 import java.util.List;
@@ -10,29 +10,28 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.gangreung.dao.QnaDAO;
-import org.gangreung.dto.Qna;
+import org.gangreung.dao.TrafficDAO;
+import org.gangreung.dto.Traffic;
+import org.gangreung.dto.TrafficVO;
 
 
-@WebServlet("/GetQnaList.do")
-public class GetQnaListCtrl extends HttpServlet {
+@WebServlet("/GetTrafficList.do")
+public class GetTrafficListCtrl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 
-    public GetQnaListCtrl() {
+    public GetTrafficListCtrl() {
         super();
-
     }
 
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		QnaDAO dao = new QnaDAO();
-		List<Qna> qList = dao.getQnaList();
-		request.setAttribute("qnaList", qList);
-		
-		RequestDispatcher view = request.getRequestDispatcher("/qna/qnaList.jsp");
+		TrafficDAO dao = new TrafficDAO();
+		List<Traffic> tList = dao.getTrafficList();
+		List<TrafficVO> voList = dao.getTab();
+		request.setAttribute("tList", tList);
+		request.setAttribute("voList", voList);
+		RequestDispatcher view = request.getRequestDispatcher("/tour/trafficList.jsp");
 		view.forward(request, response);
-				
 	}
-
 }

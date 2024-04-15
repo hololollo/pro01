@@ -1,7 +1,6 @@
 package org.gangreung.ctrl.qna;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -14,25 +13,30 @@ import org.gangreung.dao.QnaDAO;
 import org.gangreung.dto.Qna;
 
 
-@WebServlet("/GetQnaList.do")
-public class GetQnaListCtrl extends HttpServlet {
+@WebServlet("/EditQna.do")
+public class EditQnaCtrl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-
-    public GetQnaListCtrl() {
+    public EditQnaCtrl() {
         super();
-
     }
 
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		QnaDAO dao = new QnaDAO();
-		List<Qna> qList = dao.getQnaList();
-		request.setAttribute("qnaList", qList);
+		request.setCharacterEncoding("UTF-8");
+		response.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html); charset=UTF-8");
 		
-		RequestDispatcher view = request.getRequestDispatcher("/qna/qnaList.jsp");
+		int no = Integer.parseInt(request.getParameter("no"));
+		
+		QnaDAO dao = new QnaDAO();
+		Qna qna = dao.getQna2(no);
+		
+		request.setAttribute("qna", qna);
+		
+		RequestDispatcher view = request.getRequestDispatcher("/qna/editQna.jsp");
 		view.forward(request, response);
-				
+		
 	}
 
 }

@@ -26,8 +26,10 @@ public interface SqlLang {
 	String DEL_QUESTION = "delete from qna where parno=?"; // 질문, 답변 전부 삭제된다.
 	String UPD_QNA = "update qna set title=?,content=?, where no=?";
 	String VISITED_UPD_QNA = "update qna set visited=visited+1 where no=?"; // 조회수
-	String SELECT_ALL_TRAFFIC = "select * from traffic order by ttype desc, no asc";	
 	
+	String SELECT_ALL_TRAFFIC = "select * from traffic order by ttype desc, no asc";	
+	String UPD_TRAFFIC = "update traffic set route=?, coment=? where tno=?";
+	String DEL_TRAFFIC = "delete from traffic where tno=?";	
 	
 	
 	

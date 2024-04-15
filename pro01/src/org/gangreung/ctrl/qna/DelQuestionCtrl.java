@@ -1,26 +1,24 @@
-package org.ganreung.ctrl.member;
+package org.gangreung.ctrl.qna;
 
 import java.io.IOException;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.gangreung.dao.MemberDAO;
-import org.gangreung.dto.Member;
+import org.gangreung.dao.QnaDAO;
 
 
-@WebServlet("/EditMember.do")
-public class EditMemberCtrl extends HttpServlet {
+@WebServlet("/DelQuestion.do")
+public class DelQuestionCtrl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 
-    public EditMemberCtrl() {
+    public DelQuestionCtrl() {
         super();
-        // TODO Auto-generated constructor stub
+
     }
 
 
@@ -29,14 +27,17 @@ public class EditMemberCtrl extends HttpServlet {
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
 		
-		String id = request.getParameter("id");
-		MemberDAO dao = new MemberDAO();
-		Member mem = dao.getMember(id);
 		
-		request.setAttribute("mem", mem);
-		RequestDispatcher view = request.getRequestDispatcher("/member/memberInfo.jsp");
-		view.forward(request, response);		
+		int parno = Integer.parseInt(request.getParameter("parno"));
 		
+		QnaDAO dao = new QnaDAO();
+		int cnt = dao.delQuestion(parno);
+		
+		if(cnt>=1) {
+			response.sendRedirect("/pro01/GetQnaList.do");
+		} else {
+			response.sendRedirect("/pro01/GetQna.do?no="+parno);
+		}
 	}
 
 }

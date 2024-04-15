@@ -33,14 +33,19 @@
 			</nav>
 			<hr>
 		</div>
+		<%
+			int parno = Integer.parseInt(request.getParameter("parno"));
+			pageContext.setAttribute("parno", parno);
+		%>
 		<div style="width:1400px; margin:0 auto;">
-			<h3 class="page_title">질문 등록</h3>
-			<form action="${path0 }/QuestionIns.do" method="post">
+			<h3 class="page_title">답변 등록</h3>
+			<form action="${path0 }/AnswerIns.do" method="post">
 				<table class="table">
 					<tbody>
 						<tr>
 							<th><label for="title">제목</label></th>
 							<td>
+								<input type="hidden" name="parno" id="parno" value="${parno }" />
 								<input type="text" name="title" id="title" class="form-control" maxlength="100" required>
 							</td>
 						</tr>
@@ -54,7 +59,7 @@
 				</table>
 				<hr>
 				<div class="btn-group">
-				  <button type="submit" class="btn btn-secondary">질문 등록</button>
+				  <button type="submit" class="btn btn-secondary">답변 등록</button>
 				  <a href="${path0 }/GetQnaList.do" class="btn btn-secondary">질문 및 답변 목록</a>
 				</div>
 			</form>
