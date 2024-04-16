@@ -15,6 +15,7 @@
 #page1 { background-color:#ececec; }
 #page2 { background-color:#42bcf5; }
 .page_title { font-size:36px; padding-top:2em; text-align:center; }
+.page_boby { font-size:24px; padding-top:1em; text-align:center; background-position : middle;}
 </style>
 </head>
 <body>
@@ -38,11 +39,12 @@
 		<div style="width:1400px; margin:0 auto;">
 			<h3 class="page_title">오시는 길</h3>
 			<hr>
-			<h4>KTX / 시외 / 고속버스 이용시</h4>
-			<a href ="https://kko.to/i9LOXIFlhq" target="blank" img src="${path0 }/images/ToSeoul/route1.jpg" alt="시외/고속버스 이용시"/></a>
+			<h4 class="page_body">KTX / 시외 / 고속버스 이용시</h4>
+			<a href ="https://kko.to/i9LOXIFlhq" target="blank"><img src="${path0 }/images/ToSeoul/route1.jpg" alt="KTX/시외/고속버스 이용시"/></a>
 			<hr>
 			<h4>자차 이용시</h4>
-			<a href ="https://kko.to/hlVvR9KPAJ" target="blank" img src="${path0 }/images/ToSeoul/route3.jpg" alt="자차 이용시" />
+			<a href ="https://kko.to/hlVvR9KPAJ" target="blank"><img src="${path0 }/images/ToSeoul/route3.jpg" alt="자차 이용시" /></a>
+			<hr>
 		</div>
 	</section>	
 </div>
