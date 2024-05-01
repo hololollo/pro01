@@ -1,33 +1,33 @@
 package org.gangreung.dto;
 
 public class Data {
-	private String no;
-	private String plevel;
+	private int no;
+	private String title;
 	private String content;
 	private String datafile;
 	private String resdate;
 	private int visited;
 	public Data() {}
-	public Data(String no, String plevel, String content, String datafile, String resdate, int visited) {
+	public Data(int no, String title, String content, String datafile, String resdate, int visited) {
 		super();
 		this.no = no;
-		this.plevel = plevel;
+		this.title = title;
 		this.content = content;
 		this.datafile = datafile;
 		this.resdate = resdate;
 		this.visited = visited;
 	}
-	public String getNo() {
+	public int getNo() {
 		return no;
 	}
-	public void setNo(String no) {
+	public void setNo(int no) {
 		this.no = no;
 	}
-	public String getPlevel() {
-		return plevel;
+	public String getTitle() {
+		return title;
 	}
-	public void setPlevel(String plevel) {
-		this.plevel = plevel;
+	public void setTitle(String title) {
+		this.title = title;
 	}
 	public String getContent() {
 		return content;
@@ -55,7 +55,7 @@ public class Data {
 	}
 	@Override
 	public String toString() {
-		return "Data [no=" + no + ", plevel=" + plevel + ", content=" + content + ", datafile=" + datafile
+		return "Data [no=" + no + ", title=" + title + ", content=" + content + ", datafile=" + datafile
 				+ ", resdate=" + resdate + ", visited=" + visited + "]";
 	}
 	

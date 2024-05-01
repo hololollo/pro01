@@ -55,7 +55,7 @@ th.item3 { width:20%; }
 	</section>
 	<section class="page" id="page2">
 		<div style="width:1400px; margin:0 auto;">	
-			<h3 class="page_title">Hot Place(핫 플레이스)</h3>
+			<h3 class="page_title">유명 관광요소</h3>
 			
 		</div>		
 	</section>
@@ -111,7 +111,6 @@ th.item3 { width:20%; }
 </div>
 <div id="footer">
 	<%@ include file="/footer.jsp" %>	
-</div>
 </div>
 </body>
 </html>

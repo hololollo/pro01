@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 
 import org.gangreung.dao.MemberDAO;
 import org.gangreung.dto.Member;
+import org.gangreung.util.AES256;
 
 
 @WebServlet("/LogInPro.do")
@@ -39,6 +40,14 @@ public class LogInProCtrl extends HttpServlet {
 		HttpSession session = request.getSession();
 		PrintWriter out = response.getWriter();
 		RequestDispatcher view;
+		
+		String key = "%02x"; // 암호화 / 복호화용 키값.
+		
+		try {
+			mem.setPw(AES256.decryptAES256(mem.getPw(), key));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		
 		if(id.equals(mem.getId()) && pw.equals(mem.getPw()) ) { // 로그인 비교 대상
 			session.setAttribute("sid", mem.getId());

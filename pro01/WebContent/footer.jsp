@@ -30,8 +30,8 @@
 		</script>
 		<br><br>
 		<div id="copyright">
-			<p class="addr">(우)08611 서울특별시 금천구 시흥대로73길 70 금천구 가산동 소개, 대표전화 : 02-2627-2114(120 다산콜센터로연결)</p>
-			<p class="copy">COPYRIGHT(C) SEOUL GASAN INTRO. ALL RIGHTS RESERVED.</p>
+			<p class="addr">(우)[25522] 강원특별자치도 강릉시 강릉대로 33 (홍제동) 대표전화(강릉시 민원콜센터) 033-660-2018</p>
+			<p class="copy">COPYRIGHT(C) GANGREUNG-SI. ALL RIGHTS RESERVED.</p>
 		</div>
 	</div> 
 </footer>

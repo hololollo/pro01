@@ -9,6 +9,7 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" />
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR" rel="stylesheet">
 <link rel="stylesheet" href="${ipath }/css/common.css" />
+<!-- 메타포 -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="subject" content="강릉 경포동 소개(Gyungpo-dong Intro)" />
 <meta name="description" content="강릉, 경포동, 문화재, 해변, 맛집, 벚꽃, 커피" />

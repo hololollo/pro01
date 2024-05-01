@@ -106,18 +106,40 @@ insert into qna values(qseq.nextval,1,null,'질문1','질문1내용','default',0
 select * from qna;
 commit;
 
-create table data (no varchar(50) primary key not null, plevel varchar(20), content varchar(2000), datafile varchar(100), resdate varchar(20), visited int);
 
+-- 자료실
+create table data (no int primary key not null, plevel varchar(20), content varchar(2000), datafile varchar(100), resdate varchar(20), visited int);
+select * from data;
+desc data;
 create sequence dseq start with 1 increment by 1;
 
 
 
 create table member (id varchar(50) primary key not null, pw varchar(20) not null, name varchar(10) not null, email varchar(30) not null, tel varchar(15) not null);
-
+select * from member;
+insert into member values('admin','1234','관리자','admin@gangreung.org','010-1111-1111');
 insert into member values('kang', '1234', '강범준', 'kang@gangreung.org','010-8960-3255');
+insert into member values('kang1', '1234', '강', 'aaa@aaa.aaa','010-2222-2222');
 
+alter table member add addr varchar2(300);
+alter table member add postcode varchar2(8);
+
+alter table member modify pw varchar2(200);
+commit;
+-- 
+update member set addr='경포동 $ 287', postcode='12-345' where id='admin'; -- 1234
+update member set addr='교동 $ 381', postcode='45-678' where id='kang1'; -- 1234
+update member set addr='하슬라로 223 $ 독립건물 2층', postcode='36-124' where id='kang'; -- 1234
+
+-- 
+update member set pw='aoYSeQYh1TCNbZDlbo7NLfvf5vw8G+jPsOpUgkpeDwmMuGa6MqROWbAv1i/9b9gDv/kiiQ==' where id='admin';
+update member set pw='' where id='kang1';
+update member set pw='' where id='kang';
+
+commit;
 
 select * from member;
+desc member;
 -- 외래키 만들기 (id <-> aid, no)
 -- create table aid (aidId varchar(15) primary key);
 alter table qna add CONSTRAINT fkey FOREIGN KEY (aid) REFERENCES member(id);

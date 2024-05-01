@@ -16,7 +16,7 @@ public interface SqlLang {
 	
 	String SELECT_ALL_MEMBER = "select * from member order by id"; // 목록
 	String SELECT_ONE_MEMBER = "select * from member where id=?"; // 로그인
-	String INS_MEMBER = "insert into member values(?,?,?,?,?)"; // 회원가입
+	String INS_MEMBER = "insert into member values(?,?,?,?,?,?,?)"; // 회원가입
 	String UPD_MEMBER = "update member set pw=?, name=?, email=?, tel=? where id=?"; // 회원정보수정
 	String DEL_MEMBER = "delete from member where id=?"; // 회원삭제
 	
@@ -31,6 +31,7 @@ public interface SqlLang {
 	String UPD_TRAFFIC = "update traffic set route=?, coment=? where tno=?";
 	String DEL_TRAFFIC = "delete from traffic where tno=?";	
 	
+	String LATEST_DATA = "select * from data order by resdate desc";
 	
 	
 	

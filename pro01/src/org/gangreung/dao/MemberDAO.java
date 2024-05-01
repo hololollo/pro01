@@ -21,26 +21,23 @@ public class MemberDAO {
 		OracleDB oracle = new OracleDB();
 		try {
 			con = oracle.connect();
-			try {
-				pstmt = con.prepareStatement(SqlLang.SELECT_ALL_MEMBER);
-				rs = pstmt.executeQuery();
-				while(rs.next()) {
-					Member mem = new Member(rs.getString("id"),
-							rs.getString("pw"),
-							rs.getString("name"),
-							rs.getString("email"),
-							rs.getString("tel"));
-					memList.add(mem);
-				}
-			} catch (SQLException e1) {
-				e1.printStackTrace();
-			} 
-		} catch(Exception e) {
+			pstmt = con.prepareStatement(SqlLang.SELECT_ALL_MEMBER);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				Member mem = new Member(rs.getString("id"),
+						rs.getString("pw"),
+						rs.getString("name"),
+						rs.getString("email"),
+						rs.getString("tel"),
+						rs.getString("addr"),
+						rs.getString("postcode"));
+				memList.add(mem);
+			}
+		} catch(Exception e){
 			e.printStackTrace();
 		} finally {
 			oracle.close(con, pstmt, rs);
 		}
-		
 		return memList;
 	}
 	// 로그인
@@ -59,6 +56,8 @@ public class MemberDAO {
 				mem.setName(rs.getString("name"));
 				mem.setEmail(rs.getString("email"));
 				mem.setTel(rs.getString("tel"));
+				mem.setAddr(rs.getString("addr"));
+				mem.setPostcode(rs.getString("postcode"));
 			}
 		} catch(Exception e) {
 			e.printStackTrace();
@@ -79,6 +78,8 @@ public class MemberDAO {
 			pstmt.setString(3, mem.getName());
 			pstmt.setString(4, mem.getEmail());
 			pstmt.setString(5, mem.getTel());
+			pstmt.setString(6, mem.getAddr());
+			pstmt.setString(7, mem.getPostcode());
 			cnt = pstmt.executeUpdate();
 		} catch(Exception e) {
 			e.printStackTrace();

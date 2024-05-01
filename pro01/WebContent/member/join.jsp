@@ -71,6 +71,16 @@
 								<input type="tel" name="tel" id="tel" class="form-control" required>
 							</td>
 						</tr>
+						<tr>
+							<th><label for="post_btn">주소</label></th>
+							<td>
+								<p>주소 입력은 우편번호를 검색하여 입력합니다.</p>	
+								<input type="text" name="address1" id="address1" placeholder="기본 주소 입력" class="form-control" required><br>
+								<input type="text" name="address2" id="address2" placeholder="상세 주소 입력" class="form-control" required><br>
+								<input type="text" name="postcode" id="postcode" placeholder="우편번호 입력" class="form-control" style="width:160px" required><br>
+								<button type="button" id="post_btn" class="btn btn-primary" onclick="findAddr()">우편번호 검색</button>
+							</td>
+						</tr>
 					</tbody>
 				</table>
 				<hr>
@@ -117,6 +127,30 @@
 				});
 			}
 			</script>
+			<script>
+            function findAddr(){
+                new daum.Postcode({
+                    oncomplete:function(data){
+                        console.log(data);
+                        // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+                        // 도로명 주소의 노출 규칙에 따라 주소를 표시한다.
+                        // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+                        var roadAddr = data.roadAddress; // 도로명 주소 변수
+                        var jibunAddr = data.jibunAddress; // 지번 주소 변수
+                    	 // 우편번호와 주소 정보를 해당 필드에 넣는다.
+                        document.getElementById("postcode").value = data.zonecode;
+                        if(roadAddr !== ''){
+                            document.getElementById("address1").value = roadAddr;
+                        } else if(jibunAddr !== ''){
+                            document.getElementById("address1").value = jibunAddr;
+                        }
+                        document.getElementById("address2").focus();
+                    }
+                }).open();
+            }
+			</script>
+			<!-- 다음 카카오 주소 API 주소 -->
+			<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>	
 		</div>
 	</section>	
 </div>
